@@ -8,23 +8,23 @@
  * @format
  */
 
+import Router from 'navigation'
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StatusBar, StyleSheet, View } from 'react-native'
+import 'locales'
 
 const App: React.FC = () => {
   return (
     <View style={styles.root}>
-      <Text>Hello world</Text>
+      <StatusBar barStyle='dark-content' />
+      <Router />
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   root: {
-    flex: 1,
-    backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'center'
+    flex: 1
   }
 })
 
