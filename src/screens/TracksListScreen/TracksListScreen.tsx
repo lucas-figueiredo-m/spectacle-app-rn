@@ -1,20 +1,13 @@
+import Screen from 'components/Screen'
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { Text } from 'react-native'
 
 const TracksListScreen: React.FC = () => {
   return (
-    <View style={styles.root}>
+    <Screen>
       <Text>Hello world</Text>
-    </View>
+    </Screen>
   )
 }
-
-const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-})
 
 export default TracksListScreen

@@ -12,11 +12,13 @@ import Router from 'navigation'
 import React from 'react'
 import { StatusBar, StyleSheet, View } from 'react-native'
 import 'locales'
+import useColorScheme from 'hooks/useColorScheme'
 
 const App: React.FC = () => {
+  const colors = useColorScheme()
   return (
     <View style={styles.root}>
-      <StatusBar barStyle='dark-content' />
+      <StatusBar barStyle='dark-content' backgroundColor={colors.Gradient[0]} />
       <Router />
     </View>
   )
