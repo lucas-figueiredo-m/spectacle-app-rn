@@ -11,6 +11,7 @@ type ThemedPallete = {
   Contrast: string
   Gradient: string[]
   Negative: string
+  Positive: string
 }
 
 const DarkPallete: ThemedPallete = {
@@ -18,6 +19,7 @@ const DarkPallete: ThemedPallete = {
   Secondary: '#AD9BE2',
   Contrast: '#A7E8BD',
   Negative: '#991111',
+  Positive: '#4E6E58',
   Gradient: ['#7CACD1', '#AD9BE2']
 }
 
@@ -26,6 +28,7 @@ const LightPallete: ThemedPallete = {
   Secondary: '#AD9BE2',
   Contrast: '#A7E8BD',
   Negative: '#991111',
+  Positive: '#4E6E58',
   Gradient: ['#7CACD1', '#AD9BE2']
 }
 

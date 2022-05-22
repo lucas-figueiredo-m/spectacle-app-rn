@@ -38,6 +38,16 @@ const H4: React.FC<Props> = props => {
   return <Label {...props} style={[props.style, styles.h4]} />
 }
 
+const P3: React.FC<Props> = props => {
+  const styles = useThemedStyles(themedStyles)
+  return <Label {...props} style={[props.style, styles.p3]} />
+}
+
+const P4: React.FC<Props> = props => {
+  const styles = useThemedStyles(themedStyles)
+  return <Label {...props} style={[props.style, styles.p4]} />
+}
+
 const themedStyles = createThemedStyles(({ fonts }) => ({
   label: { fontFamily: fonts.families.Montserrat.family },
   h1: {
@@ -55,6 +65,14 @@ const themedStyles = createThemedStyles(({ fonts }) => ({
   h4: {
     fontSize: fonts.sizes.sm,
     fontWeight: fonts.families.Montserrat.weight.semibold
+  },
+  p3: {
+    fontSize: fonts.sizes.default,
+    fontWeight: fonts.families.Montserrat.weight.regular
+  },
+  p4: {
+    fontSize: fonts.sizes.md,
+    fontWeight: fonts.families.Montserrat.weight.regular
   }
 }))
 
@@ -62,5 +80,7 @@ export default {
   H1,
   H2,
   H3,
-  H4
+  H4,
+  P3,
+  P4
 }

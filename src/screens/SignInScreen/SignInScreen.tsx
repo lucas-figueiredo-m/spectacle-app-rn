@@ -9,23 +9,65 @@ import Label from 'components/Label'
 import { hitSlop } from 'constants/constants'
 import { useNavigation } from '@react-navigation/native'
 import { MainRoutes, MainStackNavigationProps } from 'navigation/models/MainStackModels'
+import useToastMessage from 'hooks/useToastMessage'
+import isEmail from 'validator/lib/isEmail'
+
+import auth from '@react-native-firebase/auth'
+import { TabRoutes } from 'navigation/models/TabModels'
+import useColorScheme from 'hooks/useColorScheme'
 
 const SignInScreen: React.FC = () => {
   const styles = useThemedStyles(themedStyles)
+  const colors = useColorScheme()
   const { navigate } = useNavigation<MainStackNavigationProps<MainRoutes.SignInScreen>>()
   const [email, setEmail] = useState<InputState>({ value: '', error: '' })
   const [password, setPassword] = useState<InputState>({ value: '', error: '' })
+  const [loading, setLoading] = useState<boolean>(false)
+
+  const { ShowError } = useToastMessage()
+
+  const onLogin = async () => {
+    if (!isEmail(email.value)) return setEmail({ ...email, error: 'screen.signIn.invalidEmail' })
+
+    try {
+      setLoading(true)
+      await auth().signInWithEmailAndPassword(email.value, password.value)
+      navigate(MainRoutes.TabNavigator, { screen: TabRoutes.MoviesListScreen })
+    } catch (error) {
+      const err: any = error
+      if (err.code === 'auth/wrong-password') {
+        ShowError('error.firebase.login.title', 'error.firebase.login.message')
+      }
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
     <Screen style={styles.root}>
       <Image source={logo} style={styles.image} />
       <View style={styles.inputContainer}>
-        <Input state={email} placeholder={'common.email'} onChangeText={text => setEmail({ value: text, error: '' })} />
+        <Input
+          state={email}
+          customInputStyle={styles.input}
+          autoCapitalize='none'
+          placeholder={'common.email'}
+          onChangeText={text => setEmail({ value: text, error: '' })}
+        />
         <Input
           state={password}
+          customInputStyle={styles.input}
           placeholder={'common.password'}
+          secureTextEntry
           onChangeText={text => setPassword({ value: text, error: '' })}
         />
-        <Button style={styles.button} onPress={() => null} label='screens.signIn.enter' />
+        <Button
+          style={styles.button}
+          loadingColor={colors.Primary}
+          loading={loading}
+          onPress={onLogin}
+          label='screens.signIn.enter'
+        />
 
         <TouchableOpacity
           hitSlop={hitSlop.md}
@@ -52,6 +94,9 @@ const themedStyles = createThemedStyles(({ metrics, colors }) => ({
     height: 150,
     resizeMode: 'contain',
     alignSelf: 'center'
+  },
+  input: {
+    color: colors.Common.White
   },
   button: {
     alignSelf: 'center',

@@ -1,6 +1,6 @@
 import { createThemedStyles, useThemedStyles } from 'hooks/useThemedStyles'
 import React from 'react'
-import { StyleProp, TouchableOpacity, ViewStyle } from 'react-native'
+import { ActivityIndicator, StyleProp, TouchableOpacity, ViewStyle } from 'react-native'
 import { Translation } from 'types/common'
 import Label from './Label'
 
@@ -8,14 +8,16 @@ interface Props {
   onPress: () => void
   label: Translation
   style?: StyleProp<ViewStyle>
+  loading?: boolean
+  loadingColor?: string
 }
 
-const Button: React.FC<Props> = ({ onPress, label, style }) => {
+const Button: React.FC<Props> = ({ onPress, label, style, loadingColor = '#FFFFFF', loading = false }) => {
   const styles = useThemedStyles(themedStyles)
 
   return (
     <TouchableOpacity onPress={onPress} style={[styles.root, style]}>
-      <Label.H3 t={label} style={styles.label} />
+      {loading ? <ActivityIndicator size='small' color={loadingColor} /> : <Label.H3 t={label} style={styles.label} />}
     </TouchableOpacity>
   )
 }

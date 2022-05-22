@@ -13,6 +13,7 @@ import Animated, {
 import { FontSize } from 'themes/fonts'
 import { Metrics } from 'themes/metrics'
 import { Translation } from 'types/common'
+import Label from './Label'
 
 export interface InputState {
   value: string
@@ -47,6 +48,9 @@ const themedStyles = createThemedStyles(({ colors, fonts, metrics }) => ({
     fontFamily: fonts.families.Montserrat.family,
     fontWeight: fonts.families.Montserrat.weight.semibold,
     paddingHorizontal: metrics.xs
+  },
+  error: {
+    color: colors.Negative
   }
 }))
 
@@ -121,7 +125,11 @@ export const Input: React.FC<Props> = ({
           style={[styles.input, customInputStyle]}
           ref={InputRef}
           onFocus={() => (placeholderStatus.value = withTiming(InputStatus.Focus, { duration: 200 }))}
-          onBlur={() => (placeholderStatus.value = withTiming(InputStatus.Blur, { duration: 200 }))}
+          onBlur={() =>
+            (placeholderStatus.value = withTiming(state.value === '' ? InputStatus.Blur : InputStatus.Focus, {
+              duration: 200
+            }))
+          }
           value={state.value}
           {...props}
         />
@@ -131,6 +139,7 @@ export const Input: React.FC<Props> = ({
           </Animated.Text>
         </Pressable>
       </Animated.View>
+      {state.error !== undefined && state.error !== '' && <Label.H4 t={state.error} style={styles.error} />}
     </View>
   )
 }
