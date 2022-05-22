@@ -16,10 +16,10 @@ const Router: React.FC = () => (
   <NavigationContainer>
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name={MainRoutes.SplashScreen} component={SplashScreen} />
+      <Stack.Screen name={MainRoutes.SignInScreen} component={SignInScreen} />
       <Stack.Screen name={MainRoutes.TabNavigator} component={TabNavigator} />
 
       <Stack.Group screenOptions={modalOptions}>
-        <Stack.Screen name={MainRoutes.SignInScreen} component={SignInScreen} />
         <Stack.Screen name={MainRoutes.SignUpScreen} component={SignUpScreen} />
         <Stack.Screen name={MainRoutes.AddNewMovieScreen} component={AddNewMovieScreen} />
         <Stack.Screen name={MainRoutes.AddNewTrackScreen} component={AddNewTrackScreen} />

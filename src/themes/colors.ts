@@ -1,7 +1,8 @@
 export const CommonPallete = {
   White: '#FFFFFF',
   Black: '#000000',
-  Transparent: 'transparent'
+  Transparent: 'transparent',
+  MediumGrey: '#666666'
 }
 
 type ThemedPallete = {
@@ -9,19 +10,22 @@ type ThemedPallete = {
   Secondary: string
   Contrast: string
   Gradient: string[]
+  Negative: string
 }
 
 const DarkPallete: ThemedPallete = {
-  Primary: '',
-  Secondary: '',
-  Contrast: '',
+  Primary: '#7CACD1',
+  Secondary: '#AD9BE2',
+  Contrast: '#A7E8BD',
+  Negative: '#991111',
   Gradient: ['#7CACD1', '#AD9BE2']
 }
 
 const LightPallete: ThemedPallete = {
-  Primary: '',
-  Secondary: '',
-  Contrast: '',
+  Primary: '#7CACD1',
+  Secondary: '#AD9BE2',
+  Contrast: '#A7E8BD',
+  Negative: '#991111',
   Gradient: ['#7CACD1', '#AD9BE2']
 }
 

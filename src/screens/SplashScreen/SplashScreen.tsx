@@ -1,7 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import Screen from 'components/Screen'
 import { MainRoutes, MainStackNavigationProps } from 'navigation/models/MainStackModels'
-import { TabRoutes } from 'navigation/models/TabModels'
 import React, { useEffect } from 'react'
 import { Image } from 'react-native'
 import logo from 'assets/img/logo.png'
@@ -14,7 +13,7 @@ const SplashScreen: React.FC = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      navigate(MainRoutes.TabNavigator, { screen: TabRoutes.MoviesListScreen })
+      navigate(MainRoutes.SignInScreen)
     }, 5000)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])

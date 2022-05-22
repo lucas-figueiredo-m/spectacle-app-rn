@@ -1,8 +1,22 @@
 export default {
   common: {
-    continue: 'Continuar'
+    continue: 'Continuar',
+    email: 'E-mail',
+    password: 'Senha',
+    confirmPassword: 'Confirme sua senha'
   },
-  screens: {},
+  screens: {
+    signIn: {
+      enter: 'Entrar',
+      or: 'ou',
+      newUser: 'Novo por aqui?',
+      register: ' Cadastre-se!'
+    },
+    signUp: {
+      title: 'Cadastrar',
+      register: 'Cadastrar'
+    }
+  },
 
   components: {},
 
