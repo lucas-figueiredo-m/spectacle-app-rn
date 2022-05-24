@@ -20,8 +20,8 @@ const SignInScreen: React.FC = () => {
   const styles = useThemedStyles(themedStyles)
   const colors = useColorScheme()
   const { navigate } = useNavigation<MainStackNavigationProps<MainRoutes.SignInScreen>>()
-  const [email, setEmail] = useState<InputState>({ value: '', error: '' })
-  const [password, setPassword] = useState<InputState>({ value: '', error: '' })
+  const [email, setEmail] = useState<InputState>({ value: 'lucasfigueiredo285@gmail.com', error: '' })
+  const [password, setPassword] = useState<InputState>({ value: '1q2w3e4r', error: '' })
   const [loading, setLoading] = useState<boolean>(false)
 
   const { ShowError } = useToastMessage()

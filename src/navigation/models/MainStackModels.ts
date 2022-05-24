@@ -1,5 +1,5 @@
 import { NavigatorScreenParams, RouteProp } from '@react-navigation/native'
-import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { StackNavigationProp } from '@react-navigation/stack'
 import { TabParamsList } from './TabModels'
 
 export enum MainRoutes {
@@ -8,7 +8,8 @@ export enum MainRoutes {
   SignInScreen = 'SIGN_IN_SCREEN',
   SignUpScreen = 'SIGN_UP_SCREEN',
   AddNewTrackScreen = 'ADD_NEW_TRACK_SCREEN',
-  AddNewMovieScreen = 'ADD_NEW_MOVIE_SCREEN'
+  AddNewMovieScreen = 'ADD_NEW_MOVIE_SCREEN',
+  AddNewMovieCategoryScreen = 'ADD_NEW_MOVIE_CATEGORY_SCREEN'
 }
 
 export type MainStackParamList = {
@@ -16,9 +17,10 @@ export type MainStackParamList = {
   [MainRoutes.TabNavigator]: NavigatorScreenParams<TabParamsList>
   [MainRoutes.SignInScreen]: undefined
   [MainRoutes.SignUpScreen]: undefined
-  [MainRoutes.AddNewMovieScreen]: undefined
+  [MainRoutes.AddNewMovieScreen]: { categoryId: string }
   [MainRoutes.AddNewTrackScreen]: undefined
+  [MainRoutes.AddNewMovieCategoryScreen]: undefined
 }
 
 export type MainStackScreenProps<T extends MainRoutes> = RouteProp<MainStackParamList, T>
-export type MainStackNavigationProps<T extends MainRoutes> = NativeStackNavigationProp<MainStackParamList, T>
+export type MainStackNavigationProps<T extends MainRoutes> = StackNavigationProp<MainStackParamList, T>

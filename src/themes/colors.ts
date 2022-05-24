@@ -12,6 +12,9 @@ type ThemedPallete = {
   Gradient: string[]
   Negative: string
   Positive: string
+  Shades: {
+    BackgroundShade: string
+  }
 }
 
 const DarkPallete: ThemedPallete = {
@@ -20,7 +23,10 @@ const DarkPallete: ThemedPallete = {
   Contrast: '#A7E8BD',
   Negative: '#991111',
   Positive: '#4E6E58',
-  Gradient: ['#7CACD1', '#AD9BE2']
+  Gradient: ['#7CACD1', '#AD9BE2'],
+  Shades: {
+    BackgroundShade: '#FFFFFF77'
+  }
 }
 
 const LightPallete: ThemedPallete = {
@@ -29,7 +35,10 @@ const LightPallete: ThemedPallete = {
   Contrast: '#A7E8BD',
   Negative: '#991111',
   Positive: '#4E6E58',
-  Gradient: ['#7CACD1', '#AD9BE2']
+  Gradient: ['#7CACD1', '#AD9BE2'],
+  Shades: {
+    BackgroundShade: '#00000077'
+  }
 }
 
 export const Colors = {

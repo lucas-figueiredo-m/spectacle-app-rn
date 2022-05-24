@@ -11,12 +11,12 @@ import Header from './components/Header'
 import isEmail from 'validator/lib/isEmail'
 import equals from 'validator/lib/equals'
 import auth from '@react-native-firebase/auth'
+import firestore from '@react-native-firebase/firestore'
 import useToastMessage from 'hooks/useToastMessage'
-import { TabRoutes } from 'navigation/models/TabModels'
 
 const SignUpScreen: React.FC = () => {
   const styles = useThemedStyles(themedStyles)
-  const { navigate, goBack } = useNavigation<MainStackNavigationProps<MainRoutes.SignUpScreen>>()
+  const { reset } = useNavigation<MainStackNavigationProps<MainRoutes.SignUpScreen>>()
   const [email, setEmail] = useState<InputState>({ value: '', error: '' })
   const [password, setPassword] = useState<InputState>({ value: '', error: '' })
   const [confirmPassword, setConfirmPassword] = useState<InputState>({ value: '', error: '' })
@@ -30,9 +30,13 @@ const SignUpScreen: React.FC = () => {
     }
 
     try {
-      await auth().createUserWithEmailAndPassword(email.value, password.value)
-      goBack()
-      navigate(MainRoutes.TabNavigator, { screen: TabRoutes.MoviesListScreen })
+      const user = await auth().createUserWithEmailAndPassword(email.value, password.value)
+      await firestore().collection('users').doc(user.user.uid).set({
+        name: '',
+        phone: '',
+        email: user.user.email
+      })
+      reset({ index: 0, routes: [{ name: MainRoutes.TabNavigator }] })
       ShowSuccess('success.firebase.register.title', 'success.firebase.register.message')
     } catch (error) {
       const err: any = error

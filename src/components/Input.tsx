@@ -23,6 +23,8 @@ export interface InputState {
 type Props = TextInputProps & {
   state: InputState
   placeholder: Translation
+  colors?: [string, string, string]
+  placeholderBackground?: string
   required?: boolean
   customContainerStyle?: StyleProp<ViewStyle>
   customInputStyle?: StyleProp<TextStyle>
@@ -44,7 +46,6 @@ const themedStyles = createThemedStyles(({ colors, fonts, metrics }) => ({
   },
   placeholder: {
     position: 'absolute',
-    backgroundColor: colors.Primary,
     fontFamily: fonts.families.Montserrat.family,
     fontWeight: fonts.families.Montserrat.weight.semibold,
     paddingHorizontal: metrics.xs
@@ -66,12 +67,14 @@ export const Input: React.FC<Props> = ({
   customInputStyle,
   customContainerStyle,
   required,
+  colors,
+  placeholderBackground,
   ...props
 }) => {
   const placeholderStatus = useSharedValue<InputStatus>(InputStatus.Blur)
   const t = useTranslation()
   const styles = useThemedStyles(themedStyles)
-  const colors = useColorScheme()
+  const themedColors = useColorScheme()
 
   const InputRef = useRef<TextInput>(null)
 
@@ -79,7 +82,11 @@ export const Input: React.FC<Props> = ({
     const borderColor = interpolateColor(
       placeholderStatus.value,
       [InputStatus.Blur, InputStatus.Focus, InputStatus.Error],
-      [colors.Common.MediumGrey, colors.Common.White, colors.Negative]
+      [
+        colors ? colors[0] : themedColors.Common.MediumGrey,
+        colors ? colors[1] : themedColors.Common.White,
+        colors ? colors[2] : themedColors.Negative
+      ]
     )
 
     return { borderColor }
@@ -89,7 +96,11 @@ export const Input: React.FC<Props> = ({
     const fontColor = interpolateColor(
       placeholderStatus.value,
       [InputStatus.Blur, InputStatus.Focus, InputStatus.Error],
-      [colors.Common.MediumGrey, colors.Common.White, colors.Negative]
+      [
+        colors ? colors[0] : themedColors.Common.MediumGrey,
+        colors ? colors[1] : themedColors.Common.White,
+        colors ? colors[2] : themedColors.Negative
+      ]
     )
 
     const bottom = interpolate(
@@ -134,7 +145,13 @@ export const Input: React.FC<Props> = ({
           {...props}
         />
         <Pressable onPress={() => InputRef.current?.focus()}>
-          <Animated.Text style={[placeholderStyle, styles.placeholder]}>
+          <Animated.Text
+            style={[
+              placeholderStyle,
+              styles.placeholder,
+              { backgroundColor: placeholderBackground ? placeholderBackground : themedColors.Primary }
+            ]}
+          >
             {required ? t(placeholder) + '*' : t(placeholder)}
           </Animated.Text>
         </Pressable>
