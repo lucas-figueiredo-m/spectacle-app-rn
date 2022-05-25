@@ -30,6 +30,10 @@ export default {
     addNewMovieCategory: {
       title: 'Nova categoria',
       categoryName: 'Nome da categoria'
+    },
+    addNewMovie: {
+      veryGood: 'Muito bom!',
+      addSuccess: 'O filme {{movie}} foi adicionado à lista {{category}} com sucesso!'
     }
   },
 

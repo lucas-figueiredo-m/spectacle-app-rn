@@ -5,5 +5,7 @@ export type Category = {
 
 export type Movie = {
   id: string
+  movieId: number
   title: string
+  image: string
 }

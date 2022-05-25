@@ -10,12 +10,14 @@ import movie from 'assets/icons/film.svg'
 import music from 'assets/icons/music.svg'
 import settings from 'assets/icons/settings.svg'
 import Label from 'components/Label'
+import useColorScheme from 'hooks/useColorScheme'
 
 const Tab = createBottomTabNavigator<TabParamsList>()
 
 const TabNavigator: React.FC = () => {
+  const colors = useColorScheme()
   return (
-    <Tab.Navigator screenOptions={{ headerShown: false }}>
+    <Tab.Navigator screenOptions={{ headerShown: false, tabBarActiveTintColor: colors.Secondary }}>
       <Tab.Screen
         options={{
           tabBarIcon: ({ color, size }) => <SVG xml={movie} width={size} height={size} color={color} />,

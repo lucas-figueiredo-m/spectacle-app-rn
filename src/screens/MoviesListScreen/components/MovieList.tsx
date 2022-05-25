@@ -36,13 +36,13 @@ const MovieList: React.FC<Props> = ({ category }) => {
               ...data.data()
             })) as Movie[]
 
-            console.log('DATA: ', dataList)
+            // console.log('DATA: ', dataList)
 
             setMovies(dataList)
-          },
-          errorSnapshot => {
-            console.log('ERROR: ', errorSnapshot)
           }
+          // errorSnapshot => {
+          //   console.log('ERROR: ', errorSnapshot)
+          // }
         )
 
       return () => {
@@ -55,11 +55,11 @@ const MovieList: React.FC<Props> = ({ category }) => {
     <View style={styles.root}>
       <Label.H2 t={category.name} style={styles.title} />
       <ScrollView horizontal contentContainerStyle={styles.listContainer} showsHorizontalScrollIndicator={false}>
-        <AddNewMovieItem categoryId={category.id} />
-        {movies.map(movie => (
+        <AddNewMovieItem category={category} />
+        {movies.map((movie, index) => (
           <>
             <Spacer.H />
-            <MovieItem key={movie.id} movie={movie} />
+            <MovieItem key={index} movie={movie} />
           </>
         ))}
       </ScrollView>

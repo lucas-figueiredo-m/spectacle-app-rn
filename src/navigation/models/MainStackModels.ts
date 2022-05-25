@@ -1,5 +1,6 @@
 import { NavigatorScreenParams, RouteProp } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
+import { Category } from 'models/firebaseModels'
 import { TabParamsList } from './TabModels'
 
 export enum MainRoutes {
@@ -17,7 +18,7 @@ export type MainStackParamList = {
   [MainRoutes.TabNavigator]: NavigatorScreenParams<TabParamsList>
   [MainRoutes.SignInScreen]: undefined
   [MainRoutes.SignUpScreen]: undefined
-  [MainRoutes.AddNewMovieScreen]: { categoryId: string }
+  [MainRoutes.AddNewMovieScreen]: { category: Category }
   [MainRoutes.AddNewTrackScreen]: undefined
   [MainRoutes.AddNewMovieCategoryScreen]: undefined
 }

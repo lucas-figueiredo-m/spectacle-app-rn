@@ -8,19 +8,20 @@ import plus from 'assets/icons/plus-circle.svg'
 import { useNavigation } from '@react-navigation/native'
 import { MoviesListScreenProps } from 'navigation/models/TabModels'
 import { MainRoutes } from 'navigation/models/MainStackModels'
+import { Category } from 'models/firebaseModels'
 
 interface Props {
-  categoryId: string
+  category: Category
 }
 
-const AddNewMovieItem: React.FC<Props> = ({ categoryId }) => {
+const AddNewMovieItem: React.FC<Props> = ({ category }) => {
   const styles = useThemedStyles(themedStyles)
   const colors = useColorScheme()
 
   const { navigate } = useNavigation<MoviesListScreenProps>()
 
   const onPress = () => {
-    navigate(MainRoutes.AddNewMovieScreen, { categoryId })
+    navigate(MainRoutes.AddNewMovieScreen, { category })
   }
 
   return (

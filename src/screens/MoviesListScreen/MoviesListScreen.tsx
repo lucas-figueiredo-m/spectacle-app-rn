@@ -34,13 +34,13 @@ const MoviesListScreen: React.FC = () => {
               ...data.data()
             })) as Category[]
 
-            console.log('DATA: ', dataList)
+            // console.log('DATA: ', dataList)
 
             setCategories(dataList)
-          },
-          errorSnapshot => {
-            console.log('ERROR: ', errorSnapshot)
           }
+          // errorSnapshot => {
+          //   console.log('ERROR: ', errorSnapshot)
+          // }
         )
 
       return () => {
