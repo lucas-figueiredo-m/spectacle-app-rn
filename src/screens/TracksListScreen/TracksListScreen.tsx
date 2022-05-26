@@ -1,19 +1,14 @@
 import Label from 'components/Label'
 import Screen from 'components/Screen'
-import useAppDispatch from 'hooks/useAppDispatch'
 import { createThemedStyles, useThemedStyles } from 'hooks/useThemedStyles'
 import React from 'react'
-import { Text, TouchableOpacity, View } from 'react-native'
-import { MusicThunks } from 'store/Music'
+import { View } from 'react-native'
+
 import AddTrackButton from './components/AddTrackButton'
 
 const TracksListScreen: React.FC = () => {
-  const dispatch = useAppDispatch()
   const styles = useThemedStyles(themedStyles)
 
-  const onPress = () => {
-    dispatch(MusicThunks.GetSpotifyToken())
-  }
   return (
     <Screen>
       <View style={styles.heading}>
@@ -22,9 +17,6 @@ const TracksListScreen: React.FC = () => {
       <View style={styles.buttonContainer}>
         <AddTrackButton />
       </View>
-
-      <TouchableOpacity onPress={onPress} style={styles.button} />
-      <Text>Hello world</Text>
     </Screen>
   )
 }
