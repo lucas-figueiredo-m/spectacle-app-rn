@@ -49,7 +49,8 @@ const themedStyles = createThemedStyles(({ colors, metrics }) => ({
     paddingHorizontal: metrics.sm,
     backgroundColor: colors.Common.White,
     alignItems: 'center',
-    borderRadius: metrics.lg
+    borderRadius: metrics.lg,
+    marginVertical: metrics.lg
   },
   label: {
     marginLeft: metrics.xs

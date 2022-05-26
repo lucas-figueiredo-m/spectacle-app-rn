@@ -5,14 +5,18 @@ import { TouchableOpacity, TextInput, TextInputProps } from 'react-native'
 import search from 'assets/icons/search.svg'
 import backspace from 'assets/icons/delete.svg'
 import SVG from 'components/SVG'
+import useTranslation from 'hooks/useTranslation'
+import { Translation } from 'types/common'
 
 interface Props extends TextInputProps {
   onClearText?: () => void
+  tPlaceholder: Translation
 }
 
 const SearchInput: React.FC<Props> = props => {
   const styles = useThemedStyles(themedStyles)
   const colors = useColorScheme()
+  const t = useTranslation()
 
   const InputRef = useRef<TextInput>(null)
 
@@ -22,7 +26,7 @@ const SearchInput: React.FC<Props> = props => {
       <TextInput
         {...props}
         ref={InputRef}
-        placeholder='Digite aqui'
+        placeholder={t(props.tPlaceholder)}
         placeholderTextColor={colors.Common.MediumGrey}
         style={styles.input}
       />

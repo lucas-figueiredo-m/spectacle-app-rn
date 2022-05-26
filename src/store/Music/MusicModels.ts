@@ -12,6 +12,10 @@ export type MusicState = {
   list: SpotifyMusicItem[]
 }
 
+export type SpotifySearchResponse = {
+  tracks: SpotifyMusic
+}
+
 export type SpotifyMusic = {
   href: string
   items: SpotifyMusicItem[]
@@ -23,7 +27,7 @@ export type SpotifyMusic = {
 }
 
 export type SpotifyMusicItem = {
-  album: SpotifyAlbum[]
+  album: SpotifyAlbum
   artists: SpotifyArtist[]
   available_markets: string[]
   disc_number: number

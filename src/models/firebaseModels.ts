@@ -9,3 +9,11 @@ export type Movie = {
   title: string
   image: string
 }
+
+export type Track = {
+  id: string
+  trackId: string
+  image: string
+  title: string
+  artist: string
+}

@@ -3,7 +3,7 @@ import { SPOTIFY_PAGE_LIMIT } from 'constants/constants'
 import { AuthorizeResult, authorize } from 'react-native-app-auth'
 import spotify, { config } from 'services/spotify'
 import { RootState } from 'store'
-import { SpotifyMusic } from './MusicModels'
+import { SpotifySearchResponse } from './MusicModels'
 import { MusicActions } from './MusicReducer'
 
 export const GetSpotifyToken = createAsyncThunk<void, void, { rejectValue: string }>(
@@ -21,16 +21,16 @@ export const GetSpotifyToken = createAsyncThunk<void, void, { rejectValue: strin
   }
 )
 
-export const SearchOnSpotify = createAsyncThunk<void, void, { rejectValue: string; state: RootState }>(
+export const SearchOnSpotify = createAsyncThunk<void, { restart: boolean }, { rejectValue: string; state: RootState }>(
   '[MUSIC] searches for musics on spotify given a music name',
-  async (_, { dispatch, rejectWithValue, getState }) => {
+  async ({ restart }, { dispatch, rejectWithValue, getState }) => {
     const { query, offset } = getState().musics
     try {
-      const { data } = await spotify.get<SpotifyMusic>('/search', {
-        params: { q: query, type: 'track', offset, limit: SPOTIFY_PAGE_LIMIT }
+      const { data } = await spotify.get<SpotifySearchResponse>('/search', {
+        params: { q: query, type: 'track', offset: restart ? 0 : offset, limit: SPOTIFY_PAGE_LIMIT }
       })
 
-      dispatch(MusicActions.setMusicList({ data }))
+      dispatch(MusicActions.setMusicList({ data: data.tracks }))
     } catch (error) {
       rejectWithValue('Erro')
     }
@@ -38,5 +38,6 @@ export const SearchOnSpotify = createAsyncThunk<void, void, { rejectValue: strin
 )
 
 export const MusicThunks = {
-  GetSpotifyToken
+  GetSpotifyToken,
+  SearchOnSpotify
 }

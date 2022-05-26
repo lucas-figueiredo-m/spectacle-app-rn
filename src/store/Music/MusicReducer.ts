@@ -37,6 +37,13 @@ const MusicSlice = createSlice({
     setRefreshing(state) {
       state.refreshing = true
     },
+    changeQuery(state, { payload }: PayloadAction<{ query: string }>) {
+      state.query = payload.query
+      if (payload.query === '') {
+        state.list = []
+        state.offset = 0
+      }
+    },
     clearData(state) {
       state.loading = false
       state.paging = false

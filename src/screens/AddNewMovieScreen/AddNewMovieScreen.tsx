@@ -28,9 +28,14 @@ const AddNewMovieScreen: React.FC = () => {
   return (
     <Screen>
       <Header />
-      <SearchInput value={query} onChangeText={setQuery} onClearText={() => setQuery('')} />
-      <MovieList category={params.category} movies={popular.list} title='Populares' />
-      <MovieList category={params.category} movies={topRated.list} title='Mais votados' />
+      <SearchInput
+        tPlaceholder='screens.addNewMovie.typeHere'
+        value={query}
+        onChangeText={setQuery}
+        onClearText={() => setQuery('')}
+      />
+      <MovieList category={params.category} movies={popular.list} title='screens.addNewMovie.popular' />
+      <MovieList category={params.category} movies={topRated.list} title='screens.addNewMovie.topRated' />
     </Screen>
   )
 }

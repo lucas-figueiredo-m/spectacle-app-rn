@@ -33,7 +33,15 @@ export default {
     },
     addNewMovie: {
       veryGood: 'Muito bom!',
-      addSuccess: 'O filme {{movie}} foi adicionado à lista {{category}} com sucesso!'
+      addSuccess: 'O filme {{movie}} foi adicionado à lista {{category}} com sucesso!',
+      typeHere: 'Digite aqui',
+      popular: 'Populares',
+      topRated: 'Mais votados'
+    },
+    addNewTrack: {
+      typeToSearch: 'Digite para buscar',
+      veryGood: 'Muito bom!',
+      addSuccess: 'A faixa {{track}} foi adicionado à playlist com sucesso!'
     },
     tracksList: {
       title: 'Minhas Músicas',
