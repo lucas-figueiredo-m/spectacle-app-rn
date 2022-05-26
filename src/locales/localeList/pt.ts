@@ -34,6 +34,14 @@ export default {
     addNewMovie: {
       veryGood: 'Muito bom!',
       addSuccess: 'O filme {{movie}} foi adicionado à lista {{category}} com sucesso!'
+    },
+    tracksList: {
+      title: 'Minhas Músicas',
+      components: {
+        addTrackButton: {
+          label: 'Adicionar nova música'
+        }
+      }
     }
   },
 

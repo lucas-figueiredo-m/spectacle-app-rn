@@ -71,7 +71,7 @@ export const Input: React.FC<Props> = ({
   placeholderBackground,
   ...props
 }) => {
-  const placeholderStatus = useSharedValue<InputStatus>(InputStatus.Blur)
+  const placeholderStatus = useSharedValue<InputStatus>(state.value !== '' ? InputStatus.Focus : InputStatus.Blur)
   const t = useTranslation()
   const styles = useThemedStyles(themedStyles)
   const themedColors = useColorScheme()

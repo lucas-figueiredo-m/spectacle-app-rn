@@ -43,7 +43,8 @@ const themedStyles = createThemedStyles(({ metrics, colors, fonts }) => ({
     paddingHorizontal: metrics.sm,
     paddingVertical: metrics.xs,
     marginHorizontal: metrics.md,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    alignItems: 'center'
   },
 
   input: {
@@ -53,7 +54,8 @@ const themedStyles = createThemedStyles(({ metrics, colors, fonts }) => ({
     fontSize: fonts.sizes.default,
     color: colors.Common.MediumGrey,
     flex: 1,
-    marginLeft: metrics.sm
+    marginLeft: metrics.sm,
+    padding: 0
   }
 }))
 

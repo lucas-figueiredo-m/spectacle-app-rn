@@ -12,3 +12,5 @@ export const hitSlop = {
     right: 10
   }
 }
+
+export const SPOTIFY_PAGE_LIMIT = 20

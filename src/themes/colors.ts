@@ -3,7 +3,8 @@ export const CommonPallete = {
   Black: '#000000',
   Transparent: 'transparent',
   MediumGrey: '#666666',
-  LightGrey: '#999999'
+  LightGrey: '#999999',
+  BlackShade: '#000000AA'
 }
 
 type ThemedPallete = {

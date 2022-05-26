@@ -4,7 +4,7 @@ import { Input, InputState } from 'components/Input'
 import useColorScheme from 'hooks/useColorScheme'
 import { createThemedStyles, useThemedStyles } from 'hooks/useThemedStyles'
 import React, { useState } from 'react'
-import { SafeAreaView, View } from 'react-native'
+import { Platform, SafeAreaView, View } from 'react-native'
 import Header from './components/Header'
 import isEmpty from 'validator/lib/isEmpty'
 
@@ -37,26 +37,32 @@ const AddNewMovieCategoryScreen: React.FC = () => {
   }
   return (
     <View style={styles.root}>
-      <SafeAreaView style={styles.container}>
-        <Header />
-        <Input
-          placeholder='screens.addNewMovieCategory.categoryName'
-          placeholderBackground={colors.Common.White}
-          colors={[colors.Common.MediumGrey, colors.Primary, colors.Negative]}
-          state={category}
-          onChangeText={text => setCategory({ value: text, error: '' })}
-        />
-        <View style={styles.buttonContainer}>
-          <Button onPress={goBack} label='common.cancel' style={styles.cancel} labelStyle={styles.cancelLabel} />
-          <Button onPress={onCreate} label='common.create' style={styles.create} labelStyle={styles.createLabel} />
-        </View>
-      </SafeAreaView>
+      <View style={styles.container}>
+        <SafeAreaView style={styles.safeView}>
+          <Header />
+          <Input
+            placeholder='screens.addNewMovieCategory.categoryName'
+            placeholderBackground={colors.Common.White}
+            colors={[colors.Common.MediumGrey, colors.Primary, colors.Negative]}
+            state={category}
+            onChangeText={text => setCategory({ value: text, error: '' })}
+          />
+          <View style={styles.buttonContainer}>
+            <Button onPress={goBack} label='common.cancel' style={styles.cancel} labelStyle={styles.cancelLabel} />
+            <Button onPress={onCreate} label='common.create' style={styles.create} labelStyle={styles.createLabel} />
+          </View>
+        </SafeAreaView>
+      </View>
     </View>
   )
 }
 
 const themedStyles = createThemedStyles(({ colors, metrics }) => ({
   root: {
+    flex: 1,
+    backgroundColor: Platform.OS === 'android' ? colors.Common.BlackShade : undefined
+  },
+  container: {
     backgroundColor: colors.Common.White,
     bottom: 0,
     position: 'absolute',
@@ -66,7 +72,7 @@ const themedStyles = createThemedStyles(({ colors, metrics }) => ({
     borderTopEndRadius: metrics.sm
   },
 
-  container: {
+  safeView: {
     flex: 1,
     margin: metrics.sm,
     justifyContent: 'space-between'

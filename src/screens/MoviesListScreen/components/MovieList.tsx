@@ -59,7 +59,7 @@ const MovieList: React.FC<Props> = ({ category }) => {
         {movies.map((movie, index) => (
           <>
             <Spacer.H />
-            <MovieItem key={index} movie={movie} />
+            <MovieItem key={`${movie.movieId}-${movie.id}-${index}`} movie={movie} />
           </>
         ))}
       </ScrollView>

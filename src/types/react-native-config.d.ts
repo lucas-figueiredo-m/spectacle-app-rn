@@ -4,6 +4,8 @@ declare module 'react-native-config' {
     TMDB_URL: string
     TMDB_TOKEN: string
     TMDB_IMAGE_URI: string
+    SPOTIFY_CLIENT_ID: string
+    SPOTIFY_CLIENT_SECRET: string
   }
 
   const config: ReactNativeConfigEnv

@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "module": "esnext",
     "experimentalDecorators": true,
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
