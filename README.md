@@ -33,6 +33,6 @@ After setting um the development environment to you computer's operating system,
 - Install pods (iOS only): open the ios folder inside of project directory and run `pod install`
 - Create a .env.dev file on the root directory, copy the content from .env.example and paste it on the created file.
 - Follow the steps on the [The Movie Database (TMDB)](https://developers.themoviedb.org/3/getting-started/introduction) to set up an account and create an API Token. Then, copy this token and paste on the TMDB_TOKEN environment variable
-- Follow the steps on the [SpotifyDevelopers](https://developer.spotify.com/dashboard/login) to set up an account and create project. Then, copy the spotify client ID into SPOTIFY_CLIENT_ID and the spotify client secret into SPOTIFY_CLIENT_SECRET environment variables
+- Follow the steps on the [Spotify Developers](https://developer.spotify.com/dashboard/login) to set up an account and create project. Then, copy the spotify client ID into SPOTIFY_CLIENT_ID and the spotify client secret into SPOTIFY_CLIENT_SECRET environment variables
 - Start Metro Bundler: on the root directory of the project, run `yarn start` or `npm run start` on a terminal
 - Run the app: open another terminal on the root directory and run `yarn android` or `npm run android` for Android devices, and `yarn ios` or `npm run ios` for ios devices
