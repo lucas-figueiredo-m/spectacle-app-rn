@@ -12,6 +12,12 @@
 - [x] Typescript
 - [x] Firebase (auth, firestore, analytics, crashlytics, etc)
 - [x] Redux Toolkit
+- [x] Spotify API
+- [x] react-native-app-auth
+- [x] react-native-config (set up .envs)
+- [x] TMDB API
+- [x] i18n (support for translations)
+- [x] Debugging with Flipper
 <!-- - [x] Redux Persist -->
 
 ### Environment setup
