@@ -48,6 +48,10 @@ export default {
       components: {
         addTrackButton: {
           label: 'Adicionar nova música'
+        },
+        trackItem: {
+          veryGood: 'Muito bom!',
+          deleteSuccess: 'A faixa {{track}} foi excluida da playlist com sucesso!'
         }
       }
     }

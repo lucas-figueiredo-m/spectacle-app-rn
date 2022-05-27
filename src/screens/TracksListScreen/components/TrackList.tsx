@@ -20,6 +20,7 @@ const TrackList: React.FC<Props> = ({ tracks }) => {
         data={tracks}
         contentContainerStyle={styles.listContainer}
         keyExtractor={item => item.id}
+        nestedScrollEnabled
         ListHeaderComponent={() => (
           <View>
             <HeadingImage tracks={tracks} />
